@@ -1,8 +1,8 @@
 :root {
-    --primary-color: #4F8A63; /*  principal */
-    --accent-color: #1F4D3A;  /*  destaque/hover */
-    --bg-light: #F7F5ED;      /* Fundo da página */
-    --bg-card: #E4EFE1;       /* Fundo dos blocos/cards */
+    --primary-color: #4F8A63;
+    --accent-color: #1F4D3A;
+    --bg-light: #F7F5ED;
+    --bg-card: #E4EFE1;
     --text-dark: #222;
     --border-radius: 5px;
     --transition-fast: 0.3s;
@@ -23,8 +23,8 @@ p {
     line-height: 1.6;
 }
 
-/*2. PADRONIZAÇÃO DE CORES E TEXTOS*/
-header .periodo, .bloco-guerra span {
+/*PADRONIZAÇÃO DE CORES E TEXTOS*/
+header .bloco-quadrante span {
     color: #777;
 }
 
@@ -32,9 +32,8 @@ header, nav {
     text-align: center;
 }
 
-header h1, header .periodo, .texto-destaque h2, .texto-destaque h3, 
-section h2, article h3, .titulo-acordeao, .bloco-guerra h2, .bloco-guerra h3, 
-.conteudo-guerra h3, .anos button, .evento h4, #progresso, #alternativas button {
+header h1, section h2, article h3, .titulo-acordeao, .bloco-quadrante h2, .bloco-quadrante h3, 
+.conteudo h3, #progresso, #alternativas button {
     color: var(--primary-color);
 }
 
@@ -43,8 +42,10 @@ header {
     padding: 35px 20px 10px;
 }
 
-header h1 { margin: 0; font-size: 46px; }
-header .periodo { font-size: 20px; margin: 10px 0 30px; }
+header h1 {
+    margin: 0;
+    font-size: 46px;
+}
 
 nav {
     background-color: white;
@@ -63,8 +64,14 @@ nav a {
 }
 
 nav a:hover {
-    color: var(--accent-color);
+    background-color: rgb(235, 233, 233);
+    border-radius: 10px;
 }
+
+#menu-inicio{
+    width: 25px;
+    text-align: center;
+  }
 
 main {
     width: 85%;
@@ -84,7 +91,7 @@ section h2 {
     padding-bottom: 10px;
 }
 
-article, .conteudo-guerra, .evento {
+article {
     background-color: var(--bg-card);
     padding: 20px;
     margin-top: 20px;
@@ -92,7 +99,14 @@ article, .conteudo-guerra, .evento {
     border-radius: var(--border-radius);
 }
 
-article h3, .conteudo-guerra h3, .evento h4 {
+.conteudo{
+    background-color: var(--bg-card);
+    padding: 20px;
+    margin-top: 20px;
+    border-radius: var(--border-radius);
+}
+
+article h3, .conteudo h3 {
     margin-top: 0;
 }
 
@@ -104,21 +118,11 @@ article h3, .conteudo-guerra h3, .evento h4 {
     gap: 35px;
 }
 
-.destaque-inicio img {
-    width: 430px;
-    max-width: 48%;
+.imagem-resumo {
+    width: 800px;
     height: auto;
     border-radius: 8px;
 }
-
-.texto-destaque {
-    flex: 1;
-    text-align: left;
-}
-
-.texto-destaque h2 { font-size: 28px; margin: 0 0 15px; }
-.texto-destaque h3 { font-size: 24px; margin: 0 0 15px; }
-.texto-destaque p { font-size: 18px; }
 
 /* Acordeão */
 .titulo-acordeao {
@@ -133,10 +137,22 @@ article h3, .conteudo-guerra h3, .evento h4 {
 }
 
 .titulo-acordeao span { font-size: 24px; }
-.conteudo-acordeao { display: none; margin-top: 15px; }
+.conteudo-acordeao {
+    max-width: 1000px;
+    margin: 25px auto 0;
+    display: none;
+    align-items: center;
+    gap: 35px;
+}
 
-/* Blocos de Guerra (Eixo e Aliados) */
-.blocos-guerra {
+.imagem-acordeao { 
+    width: 700px;
+    height: auto;
+    border-radius: 8px;
+}
+
+/* Blocos */
+.blocos-importancia {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -144,10 +160,10 @@ article h3, .conteudo-guerra h3, .evento h4 {
     margin: 30px 0;
 }
 
-.bloco-guerra {
+.bloco-importancia {
     width: 280px;
     min-height: 150px;
-    background-color: white;
+    background-color: #08581a;
     border: 1px solid #ddd;
     border-radius: 10px;
     padding: 25px;
@@ -156,63 +172,14 @@ article h3, .conteudo-guerra h3, .evento h4 {
     transition: var(--transition-fast);
 }
 
-.bloco-guerra:hover {
+.bloco-importancia:hover {
     transform: translateY(-5px);
-    border-color: var(--primary-color);
 }
 
-.bloco-guerra h3 { margin-top: 0; font-size: 22px; }
-.bloco-guerra p { font-size: 16px; }
-.bloco-guerra span { font-size: 13px; }
-.seta-guerra { font-size: 35px; color: #999; }
-.conteudo-guerra { display: none; }
-
-/* Linha do Tempo */
-.linha-tempo { margin-top: 40px; }
-
-.anos {
-    position: relative;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin: 35px 20px 40px;
-}
-
-.anos::before {
-    content: "";
-    position: absolute;
-    top: 50%;
-    left: 5%;
-    right: 5%;
-    height: 3px;
-    background-color: #cbd3da;
-    z-index: 0;
-}
-
-.anos button {
-    position: relative;
-    z-index: 1;
-    width: 80px;
-    height: 80px;
-    border-radius: 50%;
-    background-color: white;
-    border: 3px solid var(--primary-color);
-    font-weight: bold;
-    font-size: 15px;
-    cursor: pointer;
-    transition: var(--transition-fast);
-    box-shadow: 0 3px 7px rgba(0, 0, 0, 0.15);
-}
-
-.anos button:hover, .anos button.ativo {
-    background-color: var(--primary-color);
-    color: white;
-}
-
-.anos button:hover { transform: translateY(-2px); }
-.anos button.ativo { transform: scale(1.12); }
-.evento { display: none; }
-.evento h4 { font-size: 19px; }
+.bloco-importancia { margin-top: 0; font-size: 22px; color: white; font-weight: bold; }
+.bloco-importancia p { font-size: 16px; }
+.conteudo { display: none; border-left: 5px solid #08581a; }
+.conteudo h3 { color: #08581a; }
 
 /*COMPONENTE DO QUIZ E RODAPÉ*/
 #quiz-container { margin-top: 20px; }
