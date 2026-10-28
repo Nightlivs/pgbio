@@ -10,30 +10,13 @@ document.querySelectorAll(".titulo-acordeao").forEach(botao => {
     });
 });
 
-//LINHA DO TEMPO
-function mostrarAno(id, botao) {
-    // Esconde todos os eventos de uma vez só
-    document.querySelectorAll(".evento").forEach(ev => ev.style.display = "none");
-    
-    // Remove a classe 'ativo' de todos os botões de anos
-    document.querySelectorAll(".anos button").forEach(btn => btn.classList.remove("ativo"));
-
-    // Mostra o evento selecionado e ativa o botão atual
-    let eventoSelecionado = document.getElementById(id);
-    eventoSelecionado.style.display = "block";
-    botao.classList.add("ativo");
-
-    // Rolar suavemente até o marco
-    eventoSelecionado.scrollIntoView({ behavior: "smooth", block: "center" });
-}
-
-//EIXO E ALIADOS
-function mostrarBlocoGuerra(id) {
+//BOTÕES
+function mostrarConteudo(id) {
     let conteudo = document.getElementById(id);
     let estavaAberto = conteudo.style.display === "block";
 
     // Fecha todos os blocos de guerra em uma linha
-    document.querySelectorAll(".conteudo-guerra").forEach(bloco => bloco.style.display = "none");
+    document.querySelectorAll(".conteudo").forEach(bloco => bloco.style.display = "none");
 
     // Só reabre se ele já não estivesse aberto antes
     if (!estavaAberto) conteudo.style.display = "block";
@@ -42,64 +25,64 @@ function mostrarBlocoGuerra(id) {
 //QUIZ (DADOS E LÓGICA)
 const perguntas = [
     {
-        pergunta: "Em que ano começou a Segunda Guerra Mundial?",
-        alternativas: ["1918", "1929", "1939", "1945"],
-        correta: 2,
-        explicacao: "A Segunda Guerra Mundial começou em 1939, com a invasão da Polônia pela Alemanha."
-    },
-    {
-        pergunta: "Quais países formavam as principais potências do Eixo?",
-        alternativas: ["Alemanha, Itália e Japão", "França, Alemanha e Estados Unidos", "Reino Unido, Japão e União Soviética", "Estados Unidos, França e Itália"],
-        correta: 0,
-        explicacao: "As principais potências do Eixo foram Alemanha, Itália e Japão."
-    },
-    {
-        pergunta: "Qual acontecimento levou os Estados Unidos a entrarem na guerra?",
-        alternativas: ["A invasão da Polônia", "O ataque a Pearl Harbor", "O Dia D", "A Batalha de Stalingrado"],
+        pergunta: "Qual característica é típica dos mamíferos?",
+        alternativas: ["Possuem penas", "Produzem leite para os filhotes", "Respiram apenas pelas brânquias", "Todos põem ovos"],
         correta: 1,
-        explicacao: "Os Estados Unidos entraram oficialmente na guerra após o ataque japonês a Pearl Harbor, em dezembro de 1941."
+        explicacao: "Os mamíferos possuem glândulas mamárias que produzem leite para alimentar seus filhotes, sendo essa uma de suas principais características."
     },
     {
-        pergunta: "Qual força militar brasileira foi enviada para combater na Europa?",
-        alternativas: ["FEB", "ONU", "OTAN", "Mercosul"],
+        pergunta: "Como são chamados os animais que comem plantas e outros animais?",
+        alternativas: ["Herbívoros", "Carnívoros", "Onívoros", "Insetívoros"],
+        correta: 2,
+        explicacao: "Os animais onívoros se alimentam tanto de vegetais quanto de outros animais, como acontece com os porcos e os seres humanos."
+    },
+    {
+        pergunta: "Qual destes animais é um mamífero?",
+        alternativas: ["Tartaruga", "Sapo", "Golfinho", "Sardinha"],
+        correta: 2,
+        explicacao: "O golfinho é um mamífero aquático que respira pelos pulmões e produz leite para alimentar seus filhotes."
+    },
+    {
+        pergunta: "Onde as capivaras costumam viver?",
+        alternativas: ["Perto de rios e lagos", "Apenas em desertos", "Em regiões polares", "Somente no alto das montanhas"],
         correta: 0,
-        explicacao: "A Força Expedicionária Brasileira (FEB) enviou aproximadamente 25 mil militares para combater na Itália."
+        explicacao: "As capivaras vivem geralmente próximas a rios, lagos e áreas alagadas, pois utilizam a água para se proteger, regular a temperatura corporal e realizar atividades diárias."
     },
     {
-        pergunta: "Em qual país europeu a FEB combateu durante a Segunda Guerra Mundial?",
-        alternativas: ["França", "Polônia", "Itália", "Alemanha"],
-        correta: 2,
-        explicacao: "A Força Expedicionária Brasileira participou da campanha militar dos Aliados na Itália."
-    },
-    {
-        pergunta: "Qual foi uma consequência política do Tratado de Versalhes para a Alemanha?",
-        alternativas: ["Fortaleceu imediatamente a democracia alemã", "Provocou ressentimento que foi explorado pelo nazismo", "Transformou a Alemanha em aliada da França", "Eliminou os problemas econômicos alemães"],
+        pergunta: "Como os mamíferos respiram?",
+        alternativas: ["Por brânquias", "Por pulmões", "Apenas pela pele", "Por penas"],
         correta: 1,
-        explicacao: "As punições e limitations impostas à Alemanha contribuíram para um sentimento de insatisfação que mais tarde foi explorado politicamente por Hitler."
+        explicacao: "Todos os mamíferos respiram por meio dos pulmões, inclusive os que vivem na água, como as baleias e os golfinhos."
     },
     {
-        pergunta: "O que foi a Blitzkrieg utilizada pela Alemanha no início da guerra?",
-        alternativas: ["Uma estratégia baseada em ataques rápidos e coordenados", "Uma política de negociação diplomática", "Um sistema de defesa das cidades alemãs", "Uma aliança militar entre Alemanha e Japão"],
-        correta: 0,
-        explicacao: "Blitzkrieg significa guerra-relâmpago e envolvia ataques rápidos e coordenados com tropas terrestres, tanques e aviação."
+        pergunta: "Qual desses mamíferos põe ovos?",
+        alternativas: ["Capivara", "Onça-pintada", "Canguru", "Ornitorrinco"],
+        correta: 3,
+        explicacao: "O ornitorrinco é um mamífero monotremado, grupo raro de mamíferos que se reproduzem por meio da postura de ovos."
     },
     {
-        pergunta: "Por que a Batalha de Stalingrado é considerada um momento importante da guerra?",
-        alternativas: ["Porque marcou a entrada do Japão na guerra", "Porque provocou a rendição dos Estados Unidos", "Porque representou uma importante derrota alemã e favoreceu o avanço soviético", "Porque marcou o início da invasão da Polônia"],
-        correta: 2,
-        explicacao: "A derrota alemã em Stalingrado, em 1943, foi um importante ponto de virada na frente oriental e abriu caminho para o avanço soviético."
-    },
-    {
-        pergunta: "Qual acontecimento contribuiu diretamente para a entrada do Brasil na guerra em 1942?",
-        alternativas: ["A invasão alemã da França", "Os ataques de submarinos do Eixo a navios brasileiros", "A Batalha de Stalingrado", "A invasão japonesa da China"],
+        pergunta: "Qual grupo inclui animais como os cangurus?",
+        alternativas: ["Monotremados", "Marsupiais", "Placentários", "Roedores"],
         correta: 1,
-        explicacao: "Ataques de submarinos do Eixo a navios brasileiros provocaram mortes e forte reação popular, contribuindo para a declaração brasileira de guerra à Alemanha e à Itália."
+        explicacao: "Os cangurus são marsupiais, mamíferos cujos filhotes nascem pouco desenvolvidos e continuam seu desenvolvimento, geralmente, dentro de uma bolsa chamada marsúpio."
     },
     {
-        pergunta: "Qual contradição política marcou a participação brasileira na Segunda Guerra Mundial?",
-        alternativas: ["O Brasil lutava ao lado do Japão enquanto mantinha relações com os Estados Unidos", "O Brasil defendia o nazismo enquanto combatia a Itália", "O Brasil combatia regimes autoritários no exterior enquanto vivia a ditadura do Estado Novo", "O Brasil era uma democracia e apoiava politicamente a Alemanha nazista"],
+        pergunta: "Qual é a principal função dos pelos nos mamíferos?",
+        alternativas: ["Permitir a respiração", "Produzir leite", "Ajudar no isolamento térmico e na proteção do corpo", "Permitir a reprodução"],
         correta: 2,
-        explicacao: "O Brasil combatia regimes fascistas na Europa Xcode internamente vivia o Estado Novo, regime autoritário comandado por Getúlio Vargas."
+        explicacao: "Os pelos ajudam a conservar o calor corporal e também podem desempenhar funções de proteção e percepção do ambiente, dependendo da espécie."
+    },
+    {
+        pergunta: "Qual alternativa apresenta apenas mamíferos placentários?",
+        alternativas: ["Canguru, ornitorrinco e coala", "Cachorro, cavalo e elefante", "Ornitorrinco, equidna e cachorro", "Canguru, gato e equidna"],
+        correta: 1,
+        explicacao: "Esses três animais são mamíferos placentários. Neles, a placenta permite a troca de nutrientes, gases e resíduos entre a mãe e o embrião durante o desenvolvimento no útero."
+    },
+    {
+        pergunta: "Por que os morcegos são classificados como mamíferos, e não como aves?",
+        alternativas: ["Porque conseguem voar", "Porque possuem asas cobertas por penas", "Porque possuem pelos e glândulas mamárias", "Porque vivem principalmente durante a noite"],
+        correta: 2,
+        explicacao: "Apesar de voarem, os morcegos são mamíferos porque possuem pelos e glândulas mamárias que produzem leite para os filhotes. Suas asas são formadas por membranas de pele sustentadas por dedos alongados, e não por penas."
     }
 ];
 
@@ -134,12 +117,13 @@ function verificarResposta(indice) {
 
     if (indice === pergunta.correta) {
         botoes[indice].classList.add("correta");
-        document.getElementById("feedback").textContent = `Resposta correta! ${pergunta.explicacao}`;
+        document.getElementById("feedback").textContent = `Resposta correta!\n${pergunta.explicacao}`;
         pontos++;
+        document.getElementById("pontuacao").textContent = `Pontos: ${pontos}`;
     } else {
         botoes[indice].classList.add("errada");
         botoes[pergunta.correta].classList.add("correta");
-        document.getElementById("feedback").textContent = `Resposta incorreta. ${pergunta.explicacao}`;
+        document.getElementById("feedback").textContent = `Resposta incorreta.\n${pergunta.explicacao}`;
     }
 
     document.getElementById("proxima").style.display = "block";
@@ -164,7 +148,7 @@ function mostrarResultado() {
         <p>${msg}</p>
         <button id='refazer' onclick='refazerQuiz()'>Refazer Quiz</button>
     `;
-}
+    }
 
 function refazerQuiz() {
     perguntaAtual = 0;
